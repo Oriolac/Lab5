@@ -1,11 +1,84 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
-public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, BinaryTree<Pair<K, V>> {
+public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, BinaryTree<Pair<K, V>>, Iterable<Pair<K, V>> {
 
     private final Node<K, V> root;
     private final Comparator<K> comparator;
+
+    @Override
+    public Iterator<Pair<K, V>> iterator(){
+        return new LinkedBinarySearchTreeIterator();
+    }
+
+    private class LinkedBinarySearchTreeIterator implements Iterator<Pair<K,V>>{
+
+        private Node<K,V> next;
+
+        @Override
+        public boolean hasNext() {
+            return null != next;
+        }
+
+        @Override
+        public Pair<K, V> next() {
+            if(!hasNext()){
+                throw new NoSuchElementException();
+            } else {
+                if(next.right != null){
+                    next = next.right;
+                    while(next.left != null){
+                        next = next.left;
+                    }
+                }
+            }
+        }
+
+        public LinkedBinarySearchTreeIterator(){
+            next = root;
+            if(root != null){
+                while(next.left != null){
+                    next = next.left;
+                }
+            }
+        }
+
+        /*
+        Entry entry;
+
+
+        private class Entry {
+            Pair<K,V> content;
+            LinkedBinarySearchTree.Node<K,V> next;
+
+            public Entry(Pair<K,V> content, Node<K,V> next) {
+                this.content = content;
+                this.next = next;
+            }
+        }
+
+        private LinkedBinarySearchTreeIterator(){
+            entry = new Entry(null, root);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return null != entry && entry.next != null;
+        }
+
+        @Override
+        public Pair<K, V> next(){
+            if(!hasNext()){
+                throw new NoSuchElementException();
+            } else {
+                entry =
+
+            }
+
+        }
+        */
+
+    }
+
 
     private static class Node<K, V> {
         private final K key;
@@ -126,6 +199,8 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
     public LinkedBinarySearchTree<K, V> remove(K key) throws NullPointerException {
         if (key == null) {
             throw new NullPointerException();
+        } else if (!containsKey(key)){
+            throw this;
         }
         Node<K, V> newRoot = remove(key, root);
         return new LinkedBinarySearchTree<>(comparator, newRoot);
@@ -144,9 +219,9 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
             }
         } else {
             if(comparator.compare(key, node.key) > 0){
-                return remove(key, node.right);
+                return new Node<K,V>(node.key, node.value, node.left, remove(key, node.right));
             } else {
-                return remove(key, node.left);
+                return new Node<K,V>(node.key, node.value, remove(key, node.left), node.right);
             }
         }
     }
