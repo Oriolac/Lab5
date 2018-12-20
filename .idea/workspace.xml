@@ -151,10 +151,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="45" />
-    <option name="y" value="27" />
-    <option name="width" value="661" />
-    <option name="height" value="741" />
+    <option name="x" value="1025" />
+    <option name="y" value="10" />
+    <option name="width" value="1040" />
+    <option name="height" value="970" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -269,6 +269,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.LinkedBinarySearchTreeTest" />
+      <item itemvalue="JUnit.LinkedBinarySearchTreeTest.containsKey" />
+      <item itemvalue="JUnit.LinkedBinarySearchTreeTest.inOrder" />
+      <item itemvalue="JUnit.LinkedBinarySearchTreeTest.put" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.LinkedBinarySearchTreeTest.inOrder" />
