@@ -12,11 +12,11 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
 
     private class LinkedBinarySearchTreeIterator implements Iterator<Pair<K,V>>{
 
-        private Node<K,V> next;
+        private Stack<Node<K,V>> stack;
 
         @Override
         public boolean hasNext() {
-            return null != next;
+            return !stack.isEmpty();
         }
 
         @Override
@@ -24,58 +24,30 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
             if(!hasNext()){
                 throw new NoSuchElementException();
             } else {
-                if(next.right != null){
-                    next = next.right;
-                    while(next.left != null){
-                        next = next.left;
-                    }
+
+                Node<K,V> current = stack.top();
+                stack.pop();
+                if(current.right != null){
+                    stack.push(current.right);
                 }
+                Node<K,V> next = current.left;
+                while(next != null){
+                    stack.push(next);
+                    next = next.left;
+                }
+                return new Pair<>(current.key, current.value);
             }
         }
 
         public LinkedBinarySearchTreeIterator(){
-            next = root;
-            if(root != null){
-                while(next.left != null){
-                    next = next.left;
-                }
+            stack = new LinkedStack<>();
+            Node<K,V> next = root;
+            while(next != null){
+                stack.push(next);
+                next = next.left;
             }
         }
 
-        /*
-        Entry entry;
-
-
-        private class Entry {
-            Pair<K,V> content;
-            LinkedBinarySearchTree.Node<K,V> next;
-
-            public Entry(Pair<K,V> content, Node<K,V> next) {
-                this.content = content;
-                this.next = next;
-            }
-        }
-
-        private LinkedBinarySearchTreeIterator(){
-            entry = new Entry(null, root);
-        }
-
-        @Override
-        public boolean hasNext() {
-            return null != entry && entry.next != null;
-        }
-
-        @Override
-        public Pair<K, V> next(){
-            if(!hasNext()){
-                throw new NoSuchElementException();
-            } else {
-                entry =
-
-            }
-
-        }
-        */
 
     }
 
@@ -200,7 +172,7 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
         if (key == null) {
             throw new NullPointerException();
         } else if (!containsKey(key)){
-            throw this;
+            return this;
         }
         Node<K, V> newRoot = remove(key, root);
         return new LinkedBinarySearchTree<>(comparator, newRoot);
