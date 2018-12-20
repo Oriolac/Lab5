@@ -65,6 +65,7 @@ public class LinkedBinarySearchTreeTest<K, V> {
         lbst = lbst.put(6,6L);
         lbst = lbst.put(5,5L);
         System.out.println(InOrder.inOrder(lbst).toString());
+        System.out.println("Hola");
     }
 
 }
