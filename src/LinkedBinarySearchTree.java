@@ -171,17 +171,19 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
     public LinkedBinarySearchTree<K, V> remove(K key) throws NullPointerException {
         if (key == null) {
             throw new NullPointerException();
-        } else if (!containsKey(key)){
+        }
+        try {
+            Node<K, V> newRoot = remove(key, root);
+            return new LinkedBinarySearchTree<>(comparator, newRoot);
+        } catch (NoNodeException e) {
             return this;
         }
-        Node<K, V> newRoot = remove(key, root);
-        return new LinkedBinarySearchTree<>(comparator, newRoot);
     }
 
-    private Node<K,V> remove(K key, Node<K,V> node) {
-        /*if(node == null){
-            return null;
-        } else */if(comparator.compare(key, node.key) == 0){
+    private Node<K,V> remove(K key, Node<K,V> node) throws NoNodeException {
+        if(node == null){
+            throw new NoNodeException();
+        } else if(comparator.compare(key, node.key) == 0){
             if(node.right == null && node.left == null){
                 return null;
             } else if(node.right == null){
