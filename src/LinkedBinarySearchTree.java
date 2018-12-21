@@ -179,9 +179,9 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
     }
 
     private Node<K,V> remove(K key, Node<K,V> node) {
-        if(node == null){
+        /*if(node == null){
             return null;
-        } else if(comparator.compare(key, node.key) == 0){
+        } else */if(comparator.compare(key, node.key) == 0){
             if(node.right == null && node.left == null){
                 return null;
             } else if(node.right == null){
