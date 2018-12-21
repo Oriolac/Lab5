@@ -27,6 +27,7 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
 
                 Node<K,V> current = stack.top();
                 stack.pop();
+
                 if(current.right != null){
                     Node<K, V> next = current.right;
                     stack.push(next);
