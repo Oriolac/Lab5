@@ -3,6 +3,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 
@@ -34,6 +35,24 @@ public class LinkedBinarySearchTreeTest<K, V> {
     public void putNullKeyAndNullValue(){
         LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
         lbst.put(null, null);
+    }
+
+    @Test
+    public void putEqualKey(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        LinkedBinarySearchTree<Integer, Long> lbst2 = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst = lbst.put(7, 7L);
+        lbst = lbst.put(4, 4L);
+        lbst = lbst.put(1, 1L);
+        lbst = lbst.put(3, 3L);
+        lbst2 = lbst2.put(7, 7L);
+        lbst2 = lbst2.put(4, 4L);
+        lbst2 = lbst2.put(1, 1L);
+        lbst2 = lbst2.put(3, 3L);
+        lbst2 = lbst2.put(4, 4L);
+        lbst2 = lbst2.put(7, 7L);
+        lbst2 = lbst2.put(3, 3L);
+        assertEquals(lbst.toString(), lbst2.toString());
     }
 
     @Test
@@ -89,10 +108,19 @@ public class LinkedBinarySearchTreeTest<K, V> {
     @Test
     public void get(){
         LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
-        lbst = lbst.put(3, 3L);
+        lbst = lbst.put(7, 7L);
         lbst = lbst.put(4, 4L);
         lbst = lbst.put(1, 1L);
+        lbst = lbst.put(3, 3L);
+        lbst = lbst.put(10, 10L);
+        lbst = lbst.put(12, 12L);
+        lbst = lbst.put(8, 8L);
+        lbst = lbst.put(9, 9L);
         assertEquals(4L, (long) lbst.get(4));
+        assertEquals(3L, (long) lbst.get(3));
+        assertEquals(9L, (long) lbst.get(9));
+        assertEquals(12L, (long) lbst.get(12));
+        assertEquals(10L, (long) lbst.get(10));
     }
 
     @Test(expected = NullPointerException.class)
@@ -102,6 +130,12 @@ public class LinkedBinarySearchTreeTest<K, V> {
         lbst = lbst.put(4, 4L);
         lbst = lbst.put(1, 1L);
         lbst.get(null);
+    }
+
+    @Test
+    public void getEmptyTree(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst.get(6);
     }
 
     @Test
@@ -171,8 +205,6 @@ public class LinkedBinarySearchTreeTest<K, V> {
             assertEquals(actualPair.toString(), pairs[i].toString());
             i++;
         }
-
-
     }
 
     @Test
@@ -185,5 +217,24 @@ public class LinkedBinarySearchTreeTest<K, V> {
         tree = tree.put(6, 6L);
 
         assertEquals("(4, 4)(6, 6)(7, 7)(8, 8)(9, 9)", tree.toString());
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void next(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        Iterator<Pair<Integer, Long>> it = lbst.iterator();
+        it.next();
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void left(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst.left();
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void right(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst.right();
     }
 }
