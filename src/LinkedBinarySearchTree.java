@@ -230,7 +230,22 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
         } else { //Cas Recursiu
             return new Node<K,V>(node.key, node.value, node.left, removeMesGran(node.right));
         }
+    }
 
+    @Override
+    public String toString(){
+        return inOrderString();
+
+    }
+
+    private String inOrderString() {
+        String str = new String();
+        Iterator<Pair<K,V>> it = iterator();
+        while(it.hasNext()){
+            Pair pair = it.next();
+            str += "(" + pair.first().toString() + ", " + pair.second().toString() + ")";
+        }
+        return str;
     }
 
 
