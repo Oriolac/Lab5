@@ -16,6 +16,7 @@ public class LinkedBinarySearchTreeTest<K, V> {
         lbst = lbst.put(7, 7L);
         lbst = lbst.put(15, 15L);
         assertEquals("(7, 7L), (8, 8L), (12, 12L), (15, 15L)", lbst.toString());
+        System.out.print("Hola");
     }
 
     @Test (expected = NullPointerException.class)
