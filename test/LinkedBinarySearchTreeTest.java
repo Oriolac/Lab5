@@ -37,7 +37,7 @@ public class LinkedBinarySearchTreeTest<K, V> {
     }
 
     @Test
-    public void remove(){
+    public void removeLittleKey(){
         LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
         lbst = lbst.put(8, 8L);
         lbst = lbst.put(12, 12L);
@@ -50,16 +50,95 @@ public class LinkedBinarySearchTreeTest<K, V> {
         assertEquals("(7, 7)(8, 8)(12, 12)(15, 15)", lbst.toString());
     }
 
+    @Test
+    public void removeGreatestKey(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst = lbst.put(8, 8L);
+        lbst = lbst.put(12, 12L);
+        lbst = lbst.put(7, 7L);
+        lbst = lbst.put(15, 15L);
+        lbst = lbst.put(5, 5L);
+        lbst = lbst.put(2, 2L);
+        lbst = lbst.remove(12);
+        assertEquals("(2, 2)(5, 5)(7, 7)(8, 8)(15, 15)", lbst.toString());
+
+    }
+
+
+    @Test
+    public void removeInexistentKey(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer,Long>(Comparator.naturalOrder());
+        lbst = lbst.put(8, 8L);
+        lbst = lbst.put(12, 12L);
+        lbst = lbst.put(7, 7L);
+        lbst = lbst.put(15, 15L);
+        lbst = lbst.remove(3);
+        assertEquals("(7, 7)(8, 8)(12, 12)(15, 15)", lbst.toString());
+    }
+
+    @Test
+    public void removeEmptyBinarySearchTree(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst.remove(2);
+        assertEquals("", lbst.toString());
+    }
+
     @Test (expected = NullPointerException.class)
     public void removeNullKey(){
         LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
-        lbst.put(8, 8L);
-        lbst.put(12, 12L);
-        lbst.put(7, 7L);
-        lbst.put(15, 15L);
-        lbst.put(5, 5L);
-        lbst.put(2, 2L);
-        lbst.remove(null);
+        lbst = lbst.put(8, 8L);
+        lbst = lbst.put(12, 12L);
+        lbst = lbst.put(7, 7L);
+        lbst = lbst.put(15, 15L);
+        lbst = lbst.put(5, 5L);
+        lbst = lbst.put(2, 2L);
+        lbst = lbst.remove(null);
+    }
+
+    @Test
+    public void removeBigBinarySearchTree(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst = lbst.put(30, 30L);
+        lbst = lbst.put(15, 15L);
+        lbst = lbst.put(45, 45L);
+        lbst = lbst.put(7, 7L);
+        lbst = lbst.put(22, 22L);
+        lbst = lbst.put(37, 37L);
+        lbst = lbst.put(52, 52L);
+        lbst = lbst.put(3, 3L);
+        lbst = lbst.put(10, 10L);
+        lbst = lbst.put(18, 18L);
+        lbst = lbst.put(25, 25L);
+        lbst = lbst.put(33, 33L);
+        lbst = lbst.put(40, 40L);
+        lbst = lbst.put(48, 48L);
+        lbst = lbst.put(55, 55L);
+        lbst = lbst.remove(45);
+        lbst = lbst.remove(37);
+        lbst = lbst.remove(22);
+        lbst = lbst.remove(30);
+        assertEquals("(3, 3)(7, 7)(10, 10)(15, 15)(18, 18)(25, 25)(33, 33)(40, 40)(48, 48)(52, 52)(55, 55)", lbst.toString());
+    }
+
+    @Test
+    public void remove2(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst = lbst.put(8, 8L);
+        lbst = lbst.put(6, 6L);
+        lbst = lbst.put(7, 7L);
+        lbst = lbst.remove(8);
+        assertEquals("(6, 6)(7, 7)", lbst.toString());
+    }
+
+    @Test
+    public void remove3(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst = lbst.put(8, 8L);
+        lbst = lbst.put(6, 6L);
+        lbst = lbst.put(3, 3L);
+        lbst = lbst.put(5, 5L);
+        lbst = lbst.remove(8);
+        assertEquals("(6, 6)", lbst.toString());
     }
 
 
