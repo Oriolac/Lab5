@@ -5,16 +5,16 @@ public class InOrder {
 
     public static <K,V> List<Pair<K,V>> inOrder(LinkedBinarySearchTree<K,V> bt){
         ArrayList<Pair<K,V>> list = new ArrayList<>();
-        Stack<LinkedBinarySearchTree> stack = new LinkedStack<LinkedBinarySearchTree>();
+        Stack<LinkedBinarySearchTree> treeStack = new LinkedStack<LinkedBinarySearchTree>();
         Stack<Pair<K,V>> rootStack = new LinkedStack<>();
-        stack.push(bt);
-        while(!stack.isEmpty()){
-            LinkedBinarySearchTree<K,V> current = stack.top();
-            stack.pop();
+        treeStack.push(bt);
+        while(!treeStack.isEmpty()){
+            LinkedBinarySearchTree<K,V> current = treeStack.top();
+            treeStack.pop();
             if(!current.isEmpty()){
-                stack.push(current.right());
+                treeStack.push(current.right());
                 rootStack.push(current.root());
-                stack.push(current.left());
+                treeStack.push(current.left());
             } else if(!rootStack.isEmpty()){
                 list.add(rootStack.top());
                 rootStack.pop();
