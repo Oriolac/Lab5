@@ -15,7 +15,7 @@ public class LinkedBinarySearchTreeTest<K, V> {
         lbst = lbst.put(12, 12L);
         lbst = lbst.put(7, 7L);
         lbst = lbst.put(15, 15L);
-        assertEquals("(7, 7L), (8, 8L), (12, 12L), (15, 15L)", lbst.toString());
+        assertEquals("(7, 7)(8, 8)(12, 12)(15, 15)", lbst.toString());
     }
 
     @Test (expected = NullPointerException.class)
@@ -39,15 +39,15 @@ public class LinkedBinarySearchTreeTest<K, V> {
     @Test
     public void remove(){
         LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
-        lbst.put(8, 8L);
-        lbst.put(12, 12L);
-        lbst.put(7, 7L);
-        lbst.put(15, 15L);
-        lbst.put(5, 5L);
-        lbst.put(2, 2L);
-        lbst.remove(5);
-        lbst.remove(2);
-        assertEquals("(7, 7L), (8, 8L), (12, 12L), (15, 15L)", lbst.toString());
+        lbst = lbst.put(8, 8L);
+        lbst = lbst.put(12, 12L);
+        lbst = lbst.put(7, 7L);
+        lbst = lbst.put(15, 15L);
+        lbst = lbst.put(5, 5L);
+        lbst = lbst.put(2, 2L);
+        lbst = lbst.remove(5);
+        lbst = lbst.remove(2);
+        assertEquals("(7, 7)(8, 8)(12, 12)(15, 15)", lbst.toString());
     }
 
     @Test (expected = NullPointerException.class)
@@ -95,13 +95,13 @@ public class LinkedBinarySearchTreeTest<K, V> {
         assertEquals(4L, (long) lbst.get(4));
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void getNullKey(){
         LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
         lbst = lbst.put(3, 3L);
         lbst = lbst.put(4, 4L);
         lbst = lbst.put(1, 1L);
-        assertNull(lbst.get(null));
+        lbst.get(null);
     }
 
     @Test
@@ -120,7 +120,7 @@ public class LinkedBinarySearchTreeTest<K, V> {
         lbst = lbst.put(2, 2L);
         lbst = lbst.put(6, 6L);
         lbst = lbst.put(5, 5L);
-        assertEquals(InOrder.inOrder(lbst), expectedList);
+        assertEquals(InOrder.inOrder(lbst).toString(), expectedList.toString());
     }
 
     @Test
