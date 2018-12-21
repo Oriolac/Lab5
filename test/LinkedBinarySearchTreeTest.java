@@ -249,22 +249,25 @@ public class LinkedBinarySearchTreeTest<K, V> {
     @Test
     public void iterator(){
         LinkedBinarySearchTree<Integer,Long> tree =  new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
-        Pair<Integer,Long>[] pairs = new Pair[9];
+        ArrayList<Pair<Integer,Long>> pairs = new ArrayList<>();
 
         int[] param = new int[] {5,1,7,0,2,3,4,6,8};
 
-        for(int i = 0; i < pairs.length; i++){
-            pairs[i] = new Pair<>(i, (long) i);
+        for(int i = 0; i < 9; i++){
+            pairs.add(new Pair<>(i, (long)i ));
+
         }
-        for(int i = 0; i < pairs.length; i++){
-            tree = tree.put(pairs[param[i]].first(), pairs[param[i]].second());
+        for(int i = 0; i < 9; i++){
+
+            Pair<Integer, Long> pair = pairs.get(i);
+            tree = tree.put(pair.first(), pair.second());
         }
 
         Iterator<Pair<Integer, Long>> it = tree.iterator();
         int i = 0;
         while(it.hasNext()){
             Pair<Integer,Long> actualPair = it.next();
-            assertEquals(actualPair.toString(),pairs[i].toString());
+            assertEquals(actualPair.toString(),pairs.get(i).toString());
             i++;
         }
     }
@@ -272,17 +275,18 @@ public class LinkedBinarySearchTreeTest<K, V> {
     @Test
     public void iterator2(){
         LinkedBinarySearchTree<Integer,Long> tree =  new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
-        Pair<Integer,Long> pairs[] = new Pair[9];
-        for(int i = 0; i < pairs.length; i++){
-            pairs[i] = new Pair<>(i, (long) i);
-            tree = tree.put(pairs[i].first(), pairs[i].second());
+        ArrayList<Pair<Integer,Long>> pairs = new ArrayList<>();
+
+        for(int i = 0; i < 9; i++){
+            pairs.add(new Pair<>(i, (long) i));
+            tree = tree.put(pairs.get(i).first(),pairs.get(i).second());
         }
 
         Iterator<Pair<Integer,Long>> it = tree.iterator();
         int i = 0;
         while(it.hasNext()){
-            Pair<Integer, Long> actualPair = it.next();
-            assertEquals(actualPair.toString(), pairs[i].toString());
+            Pair<Integer,Long> actualPair = it.next();
+            assertEquals(actualPair.toString(),pairs.get(i).toString());
             i++;
         }
     }

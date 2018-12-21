@@ -4,7 +4,6 @@
     <list default="true" id="3abb809a-d2cf-41c1-95c2-e996fee30890" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/Lab5_OriolAlas_MartaAlbets/LinkedBinarySearchTreeTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LinkedBinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LinkedBinarySearchTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/LinkedBinarySearchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/LinkedBinarySearchTreeTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -56,14 +55,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="681" />
-          <entry key="txt" value="419" />
+          <entry key="java" value="1115" />
+          <entry key="txt" value="435" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="681" />
-          <entry key="PLAIN_TEXT" value="419" />
+          <entry key="JAVA" value="1115" />
+          <entry key="PLAIN_TEXT" value="435" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -98,8 +97,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/LinkedBinarySearchTreeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="251" column="46" selection-start-line="251" selection-start-column="46" selection-end-line="251" selection-end-column="46" />
+            <state relative-caret-position="431">
+              <caret line="281" column="72" selection-start-line="281" selection-start-column="72" selection-end-line="281" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,8 +109,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pair.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+            <state>
+              <caret column="24" selection-start-column="23" selection-end-column="24" />
               <folding>
                 <element signature="e#206#207#0" expanded="true" />
                 <element signature="e#234#235#0" expanded="true" />
@@ -125,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LinkedBinarySearchTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
-              <caret line="199" column="30" lean-forward="true" selection-start-line="199" selection-start-column="30" selection-end-line="199" selection-end-column="30" />
+            <state relative-caret-position="168">
+              <caret line="90" column="15" lean-forward="true" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="48" />
               <folding>
                 <element signature="e#518#519#0" expanded="true" />
                 <element signature="e#565#566#0" expanded="true" />
@@ -204,12 +203,12 @@
         <option value="$PROJECT_DIR$/src/BinaryTree.java" />
         <option value="$PROJECT_DIR$/src/stack/stack/LinkedStack.java" />
         <option value="$PROJECT_DIR$/src/stack/LinkedStack.java" />
-        <option value="$PROJECT_DIR$/src/Pair.java" />
         <option value="$PROJECT_DIR$/src/NoNodeException.java" />
         <option value="$PROJECT_DIR$/src/InOrder.java" />
         <option value="$PROJECT_DIR$/src/Stack.java" />
         <option value="$PROJECT_DIR$/src/LinkedStack.java" />
         <option value="$PROJECT_DIR$/src/LinkedBinarySearchTree.java" />
+        <option value="$PROJECT_DIR$/src/Pair.java" />
         <option value="$PROJECT_DIR$/test/LinkedBinarySearchTreeTest.java" />
       </list>
     </option>
@@ -220,7 +219,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="688" />
     <option name="height" value="735" />
@@ -256,7 +255,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545426334812" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545427723794" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/stack" />
@@ -408,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545421786817</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Arreglat remove">
+      <created>1545426734901</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1545426734901</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -531,7 +537,8 @@
     <MESSAGE value="Canvis al remove i creada excepció&#10;&#10;+Crada classe NoNodeException&#10;+El remove llançarà NoNodeException quan no es trobi el node amb la clau a l'últim nivell possible." />
     <MESSAGE value="Canvis en el containsKey + Comentaris cas simples" />
     <MESSAGE value="Canvis a InOrder, LinkedStack i Stack.&#10;&#10;+ Pila de trees canviada nom millor&#10;+ LinkedStack throws NoSuchElementException" />
-    <option name="LAST_COMMIT_MESSAGE" value="Canvis a InOrder, LinkedStack i Stack.&#10;&#10;+ Pila de trees canviada nom millor&#10;+ LinkedStack throws NoSuchElementException" />
+    <MESSAGE value="Arreglat remove" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arreglat remove" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -640,23 +647,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LinkedBinarySearchTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="199" column="30" lean-forward="true" selection-start-line="199" selection-start-column="30" selection-end-line="199" selection-end-column="30" />
-          <folding>
-            <element signature="e#518#519#0" expanded="true" />
-            <element signature="e#565#566#0" expanded="true" />
-            <element signature="e#2941#2942#0" expanded="true" />
-            <element signature="e#2980#2981#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        <state>
+          <caret column="24" selection-start-column="23" selection-end-column="24" />
           <folding>
             <element signature="e#206#207#0" expanded="true" />
             <element signature="e#234#235#0" expanded="true" />
@@ -666,10 +660,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/LinkedBinarySearchTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="90" column="15" lean-forward="true" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="48" />
+          <folding>
+            <element signature="e#518#519#0" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
+            <element signature="e#2941#2942#0" expanded="true" />
+            <element signature="e#2980#2981#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/LinkedBinarySearchTreeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="251" column="46" selection-start-line="251" selection-start-column="46" selection-end-line="251" selection-end-column="46" />
+        <state relative-caret-position="431">
+          <caret line="281" column="72" selection-start-line="281" selection-start-column="72" selection-end-line="281" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
