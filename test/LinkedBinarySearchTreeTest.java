@@ -107,13 +107,18 @@ public class LinkedBinarySearchTreeTest<K, V> {
 
     @Test
     public void hasNextIterator(){
-
+        LinkedBinarySearchTree<Integer,Long> tree = new LinkedBinarySearchTree<Integer,Long>(Comparator.naturalOrder());
+        Iterator it = tree.iterator();
+        assertFalse(it.hasNext());
+        tree = tree.put(3,3L);
+        it = tree.iterator();
+        assertTrue(it.hasNext());
     }
 
     @Test
     public void iterator(){
         LinkedBinarySearchTree<Integer,Long> tree =  new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
-        Pair<Integer,Long> pairs[] = new Pair[9];
+        Pair<Integer,Long>[] pairs = new Pair[9];
         int[] param = new int[] {5,1,7,0,2,3,4,6,8};
 
         for(int i = 0; i < pairs.length; i++){
@@ -136,9 +141,9 @@ public class LinkedBinarySearchTreeTest<K, V> {
     public void iterator2(){
         LinkedBinarySearchTree<Integer,Long> tree =  new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
         Pair<Integer,Long> pairs[] = new Pair[9];
-
         for(int i = 0; i < pairs.length; i++){
             pairs[i] = new Pair<>(i, (long) i);
+            tree = tree.put(pairs[i].first(), pairs[i].second());
         }
 
         Iterator<Pair<Integer,Long>> it = tree.iterator();
@@ -149,5 +154,18 @@ public class LinkedBinarySearchTreeTest<K, V> {
             i++;
         }
 
+
+    }
+
+    @Test
+    public void toStringTest(){
+        LinkedBinarySearchTree<Integer,Long> tree =  new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        tree = tree.put(8, 8L);
+        tree = tree.put(4, 4L);
+        tree = tree.put(9, 9L);
+        tree = tree.put(7, 7L);
+        tree = tree.put(6, 6L);
+
+        assertEquals("(4, 4)(6, 6)(7, 7)(8, 8)(9, 9)", tree.toString());
     }
 }
