@@ -8,9 +8,9 @@ import static org.junit.Assert.*;
 
 public class LinkedBinarySearchTreeTest<K, V> {
 
+    @Test
     public void put() {
         LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
-        ArrayList<Pair<Integer, Long>> expectedList = new ArrayList<>();
         lbst = lbst.put(8, 8L);
         lbst = lbst.put(12, 12L);
         lbst = lbst.put(7, 7L);
@@ -84,6 +84,24 @@ public class LinkedBinarySearchTreeTest<K, V> {
         assertTrue(lbst.containsKey(0));
         assertTrue(lbst.containsKey(4));
         assertFalse(lbst.containsKey(5));
+    }
+
+    @Test
+    public void get(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst = lbst.put(3, 3L);
+        lbst = lbst.put(4, 4L);
+        lbst = lbst.put(1, 1L);
+        assertEquals(4L, (long) lbst.get(4));
+    }
+
+    @Test
+    public void getNullKey(){
+        LinkedBinarySearchTree<Integer, Long> lbst = new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
+        lbst = lbst.put(3, 3L);
+        lbst = lbst.put(4, 4L);
+        lbst = lbst.put(1, 1L);
+        assertNull(lbst.get(null));
     }
 
     @Test

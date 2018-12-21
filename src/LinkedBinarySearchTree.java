@@ -87,21 +87,21 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
 
     @Override
     public Pair<K, V> root() {
-        return new Pair<K, V>(root.key, root.value);
+        return new Pair<>(root.key, root.value);
     }
 
     @Override
     public LinkedBinarySearchTree<K, V> left() throws NullPointerException{
         if(root == null)
             throw new NullPointerException();
-        return new LinkedBinarySearchTree<K, V>(this.comparator, root.left);
+        return new LinkedBinarySearchTree<>(this.comparator, root.left);
     }
 
     @Override
     public LinkedBinarySearchTree<K, V> right() throws NullPointerException{
         if(root == null)
             throw new NullPointerException();
-        return new LinkedBinarySearchTree<K, V>(this.comparator, root.right);
+        return new LinkedBinarySearchTree<>(this.comparator, root.right);
     }
 
 
@@ -125,7 +125,7 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
     }
 
     /**
-     * @param key
+     * @param key, it is used to find the value it is associated with.
      * @return the value of the key or null if the key is not in the tree.
      */
     @Override
@@ -137,13 +137,12 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
         if (node == null) {
             return null;
         }
-        switch (comparator.compare(key, node.key)) {
-            case 0:
-                return node.value;
-            case 1:
-                return get(key, node.right);
-            default:
-                return get(key, node.left);
+        if (comparator.compare(key, node.key) == 0) {
+            return node.value;
+        }else if (comparator.compare(key, node.key) > 0){
+            return get(key, node.right);
+        }else{
+            return get(key, node.left);
         }
     }
 
@@ -158,13 +157,13 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
 
     private Node<K, V> newNodeOfTheBranch(K key, V value, Node<K, V> actualNode) {
         if(actualNode == null){ //Cas simple 1
-            return new Node<K,V>(key, value);
+            return new Node<>(key, value);
         } else if(comparator.compare(key, actualNode.key) == 0){ //Cas simple 2
-            return new Node<K, V>(key, value, actualNode.left, actualNode.right);
+            return new Node<>(key, value, actualNode.left, actualNode.right);
         } else if (comparator.compare(key, actualNode.key) < 0){ //Casos recursius
-            return new Node<K, V>(actualNode.key, actualNode.value, newNodeOfTheBranch(key, value, actualNode.left), actualNode.right);
+            return new Node<>(actualNode.key, actualNode.value, newNodeOfTheBranch(key, value, actualNode.left), actualNode.right);
         } else {
-            return new Node<K, V>(actualNode.key, actualNode.value, actualNode.left, newNodeOfTheBranch(key, value, actualNode.right));
+            return new Node<>(actualNode.key, actualNode.value, actualNode.left, newNodeOfTheBranch(key, value, actualNode.right));
         }
     }
 
@@ -192,9 +191,9 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
             }
         } else {
             if(comparator.compare(key, node.key) > 0){
-                return new Node<K,V>(node.key, node.value, node.left, remove(key, node.right));
+                return new Node<>(node.key, node.value, node.left, remove(key, node.right));
             } else {
-                return new Node<K,V>(node.key, node.value, remove(key, node.left), node.right);
+                return new Node<>(node.key, node.value, remove(key, node.left), node.right);
             }
         }
     }
