@@ -41,6 +41,7 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
             }
         }
 
+
         public LinkedBinarySearchTreeIterator(){
             stack = new LinkedStack<>();
             Node<K,V> next = root;
@@ -107,21 +108,7 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
 
     @Override
     public boolean containsKey(K key) {
-        return isKeyInNodeOrDeeperLevels(key, root);
-    }
-
-    private boolean isKeyInNodeOrDeeperLevels(K key, Node<K, V> node) {
-        if (node == null) {   // 1r Cas Simple
-            return false;
-        } else if (comparator.compare(key, node.key) == 0) { // 2n Cas Simple
-            return true;
-        } else {    // Cas recursiu
-            if (comparator.compare(key, node.key) < 0) {  //La clau pot estar en
-                return isKeyInNodeOrDeeperLevels(key, node.left);
-            } else {
-                return isKeyInNodeOrDeeperLevels(key, node.right);
-            }
-        }
+        return get(key) != null;
     }
 
     /**
@@ -134,14 +121,13 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
     }
 
     private V get(K key, Node<K, V> node) {
-        if (node == null) {
+        if (node == null) { //Cas simple 1
             return null;
-        }
-        if (comparator.compare(key, node.key) == 0) {
+        } else if (comparator.compare(key, node.key) == 0) {    // Cas simple 2
             return node.value;
-        }else if (comparator.compare(key, node.key) > 0){
+        }else if (comparator.compare(key, node.key) > 0){   // Cas recursiu 1
             return get(key, node.right);
-        }else{
+        }else{  // Cas recursiu 2
             return get(key, node.left);
         }
     }
@@ -191,7 +177,7 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
             } else {
                 return mesPetit(node, node.right);
             }
-        } else {
+        } else { //Cas recursiu
             if(comparator.compare(key, node.key) > 0){
                 return new Node<>(node.key, node.value, node.left, remove(key, node.right));
             } else {
@@ -248,6 +234,4 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
         }
         return str;
     }
-
-
 }
