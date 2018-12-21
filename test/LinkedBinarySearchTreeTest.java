@@ -157,7 +157,7 @@ public class LinkedBinarySearchTreeTest<K, V> {
         lbst = lbst.put(3, 3L);
         lbst = lbst.put(5, 5L);
         lbst = lbst.remove(8);
-        assertEquals("(6, 6)", lbst.toString());
+        assertEquals("(3, 3)(5, 5)(6, 6)", lbst.toString());
     }
 
 
@@ -250,6 +250,7 @@ public class LinkedBinarySearchTreeTest<K, V> {
     public void iterator(){
         LinkedBinarySearchTree<Integer,Long> tree =  new LinkedBinarySearchTree<Integer, Long>(Comparator.naturalOrder());
         Pair<Integer,Long>[] pairs = new Pair[9];
+
         int[] param = new int[] {5,1,7,0,2,3,4,6,8};
 
         for(int i = 0; i < pairs.length; i++){

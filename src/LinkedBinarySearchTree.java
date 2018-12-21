@@ -186,17 +186,19 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
         }
     }
 
+    //Busca el node més petit
     private Node<K,V> mesPetit(Node<K,V> nodeAEliminar, Node<K,V> actualNode) {
         if(actualNode.left == null){
-            return new Node(actualNode.key, actualNode.value, nodeAEliminar.left, removeMesPetit(nodeAEliminar.right));
+            return new Node<>(actualNode.key, actualNode.value, nodeAEliminar.left, removeMesPetit(nodeAEliminar.right));
         }
         //Cas Recursiu
         return mesPetit(nodeAEliminar, actualNode.left);
     }
 
+    //
     private Node removeMesPetit(Node<K,V> node) {
         if(node.left == null){
-            return null;
+            return node.right;
         } else { //Cas Recursiu
             return new Node<K,V>(node.key, node.value, removeMesPetit(node.left), node.right);
         }
@@ -213,7 +215,7 @@ public class LinkedBinarySearchTree<K, V> implements BinarySearchTree<K, V>, Bin
 
     private Node removeMesGran(Node<K, V> node) {
         if(node.right == null){
-            return null;
+            return node.left;
         } else { //Cas Recursiu
             return new Node<K,V>(node.key, node.value, node.left, removeMesGran(node.right));
         }
